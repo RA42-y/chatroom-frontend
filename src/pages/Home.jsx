@@ -1,6 +1,5 @@
 import Container from 'react-bootstrap/Container';
 import SideMenu from "../components/SideMenu";
-import '../components/Components.css'
 
 function Home() {
     return (

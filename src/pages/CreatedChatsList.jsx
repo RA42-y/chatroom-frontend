@@ -3,7 +3,6 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import ChatCard from '../components/ChatCard';
 import CustomPagination from '../components/Pagination';
-import './pages.css';
 import axios from "axios";
 import {Spinner} from "react-bootstrap";
 
