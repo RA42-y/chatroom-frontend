@@ -5,8 +5,10 @@ import CreatedChatsList from "../pages/CreatedChatsList";
 import JoinedChatsList from "../pages/JoinedChatsList";
 import ScheduleChatForm from "../pages/ScheduleChatForm";
 import AppIcon from "../assets/chat-icon.png"
+import UserDefaultAvatar from "../assets/default-user-avatar.png"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faComments, faPlusSquare, faUser} from '@fortawesome/free-regular-svg-icons'
+import UserInfoCard from "./UserInfoCard";
 
 
 function SideMenu() {
@@ -50,7 +52,9 @@ function SideMenu() {
                         </div>
                         <Nav variant="pills" className="flex-column">
                             <Nav.Item>
-                                <Nav.Link eventKey="created-chats"><FontAwesomeIcon icon={faUser} /> Created Chats</Nav.Link>
+                                <Nav.Link eventKey="created-chats" className={activeTab === 'created-chats' ? 'custom-active-nav' : ''}>
+                                    <FontAwesomeIcon icon={faUser} /> Created Chats
+                                </Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link eventKey="joined-chats"><FontAwesomeIcon icon={faComments} /> Joined Chats</Nav.Link>
@@ -59,13 +63,7 @@ function SideMenu() {
                                 <Nav.Link eventKey="schedule-chat-form"><FontAwesomeIcon icon={faPlusSquare} /> Schedule a Chat</Nav.Link>
                             </Nav.Item>
                         </Nav>
-                        <div className="d-flex align-items-center justify-content-end mt-4">
-                            <img src="{userAvatar}" alt="username" width="30" height="30" className="mr-2 avatar user-avatar"/>
-                            <span>userName</span>
-                            <button className="btn btn-link ml-3" onClick={onLogout}>
-                                Logout
-                            </button>
-                        </div>
+                        <UserInfoCard/>
                     </Col>
                     <Col sm={9} className={"right-container"}>
                         <Tab.Content>
