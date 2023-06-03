@@ -2,7 +2,7 @@ import Card from 'react-bootstrap/Card';
 import ChatIcon from "../assets/chat-icon.png"
 
 function ChatCard(props) {
-    const { chatName, description } = props;
+    const { id, chatName, description } = props;
 
     return (
         <Card className={'chat-card'}>

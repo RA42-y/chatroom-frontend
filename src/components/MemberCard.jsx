@@ -1,7 +1,8 @@
 import Card from 'react-bootstrap/Card';
 import UserDefaultAvatar from "../assets/default-user-avatar.png"
 
-function MemberCard() {
+function MemberCard(props) {
+    const { member } = props;
 
     return (
         <Card className={'member-card'}>
@@ -9,9 +10,9 @@ function MemberCard() {
                 <div className="d-flex flex-row">
                     <img src={UserDefaultAvatar} className={"avatar user-avatar"} style={{ marginRight: '2em'}}/>
                     <div className={"flex-column"} style={{ textAlign: 'left'}}>
-                        <Card.Title>Member name</Card.Title>
+                        <Card.Title>{member.firstName} {member.lastName}</Card.Title>
                         <Card.Text>
-                            email@example.com
+                            {member.email}
                         </Card.Text>
                     </div>
                 </div>

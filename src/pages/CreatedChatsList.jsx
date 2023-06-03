@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
 import ChatCard from '../components/ChatCard';
 import CustomPagination from '../components/CustomPagination';
 import axios from "axios";
@@ -24,16 +22,6 @@ class CreatedChatsList extends Component {
         this.fetchChats();
     }
 
-    handleChatClick = (id) => {
-        this.setState({selectedChat: id});
-    };
-
-    handlePageChange = (page) => {
-        this.setState({currentPage: page}, () => {
-            this.fetchChats();
-        });
-    };
-
     fetchChats = () => {
         const {currentPage} = this.state;
         const size = 7;
@@ -53,6 +41,17 @@ class CreatedChatsList extends Component {
             });
     };
 
+    handleClick = (id) => {
+        this.setState({ selectedChat: id }, () => {
+            console.log(this.state.selectedChat);
+        });
+    };
+
+    handlePageChange = (page) => {
+        this.setState({currentPage: page}, () => {
+            this.fetchChats();
+        });
+    };
 
     render() {
         const {selectedChat, currentPage, totalPages, chats, isLoading} = this.state;
@@ -86,20 +85,19 @@ class CreatedChatsList extends Component {
                     <h2>
                         <strong>Created Chats</strong>
                     </h2>
-                    {chats.map((chat, idx) => (
-                        <Row key={idx}>
-                            <ChatCard id={chat.id} onClick={this.handleChatClick} chatName={chat.name}
-                                      description={chat.description}/>
-                        </Row>
+                    {chats.map((chat) => (
+                        <div className={"chat-card-container"} id={`chat-${chat.id}`} key={chat.id} onClick={() => this.handleClick(chat.id)}>
+                            <ChatCard chatName={chat.name} description={chat.description}/>
+                        </div>
                     ))}
                     <br/>
                     <CustomPagination currentPage={currentPage} totalPages={totalPages}
                                       onPageChange={this.handlePageChange}/>
                 </div>
                 <div className="chat-info-container">
-                    {/*{selectedChat !== null && (*/}
-                        <ChatInfo selectedChat={selectedChat}/>
-                    {/*)}*/}
+                    {selectedChat !== null && (
+                        <ChatInfo key={selectedChat} selectedChat={selectedChat}/>
+                    )}
                 </div>
             </main>
         );
