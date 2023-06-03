@@ -2,9 +2,10 @@ import React, {Component} from 'react';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import ChatCard from '../components/ChatCard';
-import CustomPagination from '../components/Pagination';
+import CustomPagination from '../components/CustomPagination';
 import axios from "axios";
 import {Spinner} from "react-bootstrap";
+import ChatInfo from "../components/ChatInfo";
 
 
 class CreatedChatsList extends Component {
@@ -58,11 +59,18 @@ class CreatedChatsList extends Component {
 
         if (isLoading) {
             return (
-                <div className="loading-container">
-                    <Spinner animation="border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </Spinner>
-                </div>
+                <main>
+                    <div className="chats-list">
+                        <h2>
+                            <strong>Created Chats</strong>
+                        </h2>
+                        <div className="loading-container">
+                            <Spinner animation="border" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner>
+                        </div>
+                    </div>
+                </main>
             );
         }
 
@@ -73,8 +81,8 @@ class CreatedChatsList extends Component {
         const slicedChats = chats.slice(startIndex, endIndex);
 
         return (
-            <Row>
-                <Col sm={4} className="chats-list">
+            <main>
+                <div className="chats-list">
                     <h2>
                         <strong>Created Chats</strong>
                     </h2>
@@ -87,15 +95,13 @@ class CreatedChatsList extends Component {
                     <br/>
                     <CustomPagination currentPage={currentPage} totalPages={totalPages}
                                       onPageChange={this.handlePageChange}/>
-                </Col>
-                <Col className="chat-info-container">
-                    {selectedChat !== null && (
-                        <div className="chat-info">
-                            <h2>Chat {selectedChat} Information</h2>
-                        </div>
-                    )}
-                </Col>
-            </Row>
+                </div>
+                <div className="chat-info-container">
+                    {/*{selectedChat !== null && (*/}
+                        <ChatInfo selectedChat={selectedChat}/>
+                    {/*)}*/}
+                </div>
+            </main>
         );
     }
 }
