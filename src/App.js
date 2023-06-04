@@ -1,12 +1,10 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import SideMenu from "./components/SideMenu";
-import CreatedChatsList from "./pages/CreatedChatsListPage";
-import ScheduleChatForm from "./pages/ScheduleChatForm";
-import JoinedChatsList from "./pages/JoinedChatsListPage";
-import ChatsListPage from "./pages/ChatsListPage";
 import CreatedChatsListPage from "./pages/CreatedChatsListPage";
+import ScheduleChatForm from "./pages/ScheduleChatForm";
 import JoinedChatsListPage from "./pages/JoinedChatsListPage";
+import ChatsListPage from "./pages/ChatsListPage";
 
 function App() {
     return (

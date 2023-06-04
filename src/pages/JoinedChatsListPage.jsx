@@ -4,7 +4,6 @@ import axios from "axios";
 import {Spinner} from "react-bootstrap";
 import ChatInfo from "../components/ChatInfo";
 import ChatsList from "../components/ChatsList";
-import SideMenu from "../components/SideMenu";
 
 
 class JoinedChatsListPage extends Component {
