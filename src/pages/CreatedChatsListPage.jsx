@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import ChatCard from '../components/ChatCard';
 import CustomPagination from '../components/CustomPagination';
 import axios from "axios";
 import {Spinner} from "react-bootstrap";
 import ChatInfo from "../components/ChatInfo";
+import ChatsList from "../components/ChatsList";
+import SideMenu from "../components/SideMenu";
 
 
-class CreatedChatsList extends Component {
+class CreatedChatsListPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -41,7 +42,7 @@ class CreatedChatsList extends Component {
             });
     };
 
-    handleClick = (id) => {
+    handleChatCardClick = (id) => {
         this.setState({ selectedChat: id }, () => {
             console.log(this.state.selectedChat);
         });
@@ -58,18 +59,21 @@ class CreatedChatsList extends Component {
 
         if (isLoading) {
             return (
-                <main>
-                    <div className="chats-list">
-                        <h2>
-                            <strong>Created Chats</strong>
-                        </h2>
-                        <div className="loading-container">
-                            <Spinner animation="border" role="status">
-                                <span className="visually-hidden">Loading...</span>
-                            </Spinner>
+                <div>
+                    {/*<SideMenu/>*/}
+                    <main>
+                        <div className="chats-list">
+                            <h2>
+                                <strong>Created Chats</strong>
+                            </h2>
+                            <div className="loading-container">
+                                <Spinner animation="border" role="status">
+                                    <span className="visually-hidden">Loading...</span>
+                                </Spinner>
+                            </div>
                         </div>
-                    </div>
-                </main>
+                    </main>
+                </div>
             );
         }
 
@@ -80,28 +84,28 @@ class CreatedChatsList extends Component {
         const slicedChats = chats.slice(startIndex, endIndex);
 
         return (
-            <main>
-                <div className="chats-list">
-                    <h2>
-                        <strong>Created Chats</strong>
-                    </h2>
-                    {chats.map((chat) => (
-                        <div className={"chat-card-container"} id={`chat-${chat.id}`} key={chat.id} onClick={() => this.handleClick(chat.id)}>
-                            <ChatCard chatName={chat.name} description={chat.description}/>
-                        </div>
-                    ))}
-                    <br/>
-                    <CustomPagination currentPage={currentPage} totalPages={totalPages}
-                                      onPageChange={this.handlePageChange}/>
-                </div>
-                <div className="chat-info-container">
-                    {selectedChat !== null && (
-                        <ChatInfo key={selectedChat} selectedChat={selectedChat}/>
-                    )}
-                </div>
-            </main>
+            <div className={"my-container"}>
+                {/*<SideMenu/>*/}
+                <main>
+                    <div className="chats-list">
+                        <h2>
+                            <strong>Created Chats</strong>
+                        </h2>
+                        <ChatsList chats={chats} onChatCardClick={this.handleChatCardClick} />
+                        <br/>
+                        <CustomPagination currentPage={currentPage} totalPages={totalPages}
+                                          onPageChange={this.handlePageChange}/>
+                    </div>
+                    <div className="chat-info-container">
+                        {selectedChat !== null && (
+                            <ChatInfo key={selectedChat} selectedChat={selectedChat}/>
+                        )}
+                    </div>
+                </main>
+            </div>
+
         );
     }
 }
 
-export default CreatedChatsList;
+export default CreatedChatsListPage;

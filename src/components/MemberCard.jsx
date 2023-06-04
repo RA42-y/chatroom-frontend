@@ -1,8 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import UserDefaultAvatar from "../assets/default-user-avatar.png"
 
-function MemberCard(props) {
-    const { member } = props;
+const MemberCard = ({member}) => {
 
     return (
         <Card className={'member-card'}>

@@ -97,7 +97,7 @@ import UserInfoCard from "./UserInfoCard";
 function SideMenu() {
 
     const navigate = useNavigate();
-    const [activeTab, setActiveTab] = useState('created-chats');
+    const [activeTab, setActiveTab] = useState('chats');
 
     const handleTabChange = (eventKey) => {
         setActiveTab(eventKey);
@@ -112,6 +112,11 @@ function SideMenu() {
                     <h1><strong>Chatroom</strong></h1>
                 </div>
                 <Nav variant="pills" className="flex-column" >
+                    <Nav.Item>
+                        <NavLink to="/chats" eventKey="chats">
+                            <FontAwesomeIcon icon={faUser}/> My Chats
+                        </NavLink>
+                    </Nav.Item>
                     <Nav.Item>
                         <NavLink to="/created-chats" eventKey="created-chats">
                             <FontAwesomeIcon icon={faUser}/> Created Chats
