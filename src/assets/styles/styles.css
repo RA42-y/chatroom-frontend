@@ -49,8 +49,8 @@ footer {
 
 .chats-list {
     /*width: 100%;*/
-    width: 40%;
-    min-width: 400px;
+    width: 30%;
+    min-width: 300px;
     margin: 2em 1em 0.5em 1em;
 }
 
@@ -97,9 +97,9 @@ h2 {
 /*}*/
 
 .chat-info-container {
-    width: 60%;
+    width: 70%;
     height: 100vh;
-    padding: 6.3em 0 2em 1em;
+    padding: 1em 0 2em 1em;
 }
 
 .chat-info {
@@ -107,14 +107,8 @@ h2 {
     border-radius: 10px;
     background: white;
     box-shadow: 0 2px 8px lightgray;
-    padding: 2em 1em 1em;
+    padding: 1em;
     text-align: center;
-}
-
-.user-avatar {
-    border-radius: 50%;
-    width: 4em;
-    height: 4em;
 }
 
 .login-user-avatar {
@@ -137,12 +131,6 @@ h2 {
     justify-content: center;
     text-align: center;
     margin-top: auto;
-}
-
-.member-card {
-    margin: 0 6em;
-    border-radius: unset;
-    border: none;
 }
 
 .nav-link {
@@ -226,5 +214,75 @@ h2 {
     white-space: nowrap;
 }
 
+/*.chat-window {*/
+/*    width: 70%;*/
+/*    height: 100vh;*/
+/*    padding: 1em 0 2em 1em;*/
+/*}*/
 
+.chat-window {
+    height: 100%;
+    border-radius: 10px;
+    background: white;
+    box-shadow: 0 2px 8px lightgray;
+    padding: 1em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.chat-window-header {
+    height: 6%;
+    /*border-bottom: 1px solid #ccc;*/
+}
+
+.chat-message-info {
+    height: 88%;
+    padding: 0.5em;
+}
+
+.chat-message-window {
+
+}
+
+.member-info-column {
+    background-color: whitesmoke;
+    border-radius: 10px;
+    /*border-left: 1px solid #ccc;*/
+    padding: 1em 0;
+}
+
+
+.message-form {
+    height: 6%;
+    padding-top: 0.5em;
+    margin-top: auto;
+    /*border-top: 1px solid #ccc;*/
+}
+
+.member-card {
+    background-color: transparent;
+    width: 100%;
+    margin: 0 auto;
+    border-radius: unset;
+    border: none;
+    padding: 0;
+}
+
+.member-card .card-body{
+    padding: 1em;
+    font-size: x-small;
+}
+
+.user-avatar {
+    border-radius: 50%;
+    margin-right: 1em;
+    width: 4em;
+    height: 4em;
+}
+
+.member-card .card-title{
+    font-size: 1.2em;
+}
 

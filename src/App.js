@@ -5,6 +5,7 @@ import CreatedChatsListPage from "./pages/CreatedChatsListPage";
 import ScheduleChatForm from "./pages/ScheduleChatForm";
 import JoinedChatsListPage from "./pages/JoinedChatsListPage";
 import ChatsListPage from "./pages/ChatsListPage";
+import ChatPage from "./pages/ChatPage";
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                         <Route path="/created-chats" element={<CreatedChatsListPage/>}/>
                         <Route path="/joined-chats" element={<JoinedChatsListPage/>}/>
                         <Route path="/schedule-chat-form" element={<ScheduleChatForm/>}/>
+                        <Route path="/chat" element={<ChatPage/>}/>
                     </Routes>
                 </Router>
             </div>

@@ -7,7 +7,7 @@ const MemberCard = ({member}) => {
         <Card className={'member-card'}>
             <Card.Body>
                 <div className="d-flex flex-row">
-                    <img src={UserDefaultAvatar} className={"avatar user-avatar"} style={{ marginRight: '2em'}}/>
+                    <img src={UserDefaultAvatar} className={"avatar user-avatar"}/>
                     <div className={"flex-column"} style={{ textAlign: 'left'}}>
                         <Card.Title>{member.firstName} {member.lastName}</Card.Title>
                         <Card.Text>
