@@ -176,3 +176,55 @@ h2 {
     display: flex;
     justify-content: center;
 }
+
+.chat-info-dropdown {
+    text-align: right;
+    z-index: 1;
+}
+
+.chat-info-dropdown-btn {
+    color: white;
+    background-color: lightgray;
+    justify-content: center;
+    text-align: center;
+    border-radius: 50%;
+    border: none;
+    width: 2em;
+    height: 2em;
+}
+
+.chat-info-dropdown-btn:hover {
+    color: white;
+    background-color: darkgray;
+}
+
+.dropdown-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hide-dropdown-arrow::after {
+    display: none !important;
+}
+
+.dropdown-menu {
+    --bs-dropdown-min-width: fit-content;
+    margin-top: 0.5em;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+}
+
+.dropdown-icon {
+    margin-right: 0.5em;
+}
+
+.dropdown-text {
+    white-space: nowrap;
+}
+
+
+

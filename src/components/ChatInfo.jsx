@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import MemberCard from "./MemberCard";
 import axios from "axios";
 import {Spinner} from "react-bootstrap";
+import ChatOperationDropdown from "./ChatOperationDropdown";
 
 class ChatInfo extends Component {
 
@@ -51,13 +52,14 @@ class ChatInfo extends Component {
 
         return (
             <div className="chat-info">
+                <ChatOperationDropdown chatId={chatInfo.id}/>
                 <h3><strong>{chatInfo.name}</strong></h3>
                 <p>{chatInfo.description}</p>
                 <h4 style={{marginTop: '1em'}}><strong>Creator</strong></h4>
                 <MemberCard id={chatInfo.creator.id} member={chatInfo.creator}/>
                 <h4 style={{marginTop: '1em'}}><strong>Members</strong></h4>
                 {chatInfo.members.map(member => (
-                    <MemberCard key={member.id} id={member.id} member={member} />
+                    <MemberCard key={member.id} id={member.id} member={member}/>
                 ))}
             </div>
         );
