@@ -4,6 +4,7 @@ import axios from "axios";
 import {Spinner} from "react-bootstrap";
 import ChatInfo from "../components/ChatInfo";
 import ChatsList from "../components/ChatsList";
+import ChatWindow from "../components/ChatWindow";
 
 
 class JoinedChatsListPage extends Component {
@@ -97,7 +98,7 @@ class JoinedChatsListPage extends Component {
                     </div>
                     <div className="chat-info-container">
                         {selectedChat !== null && (
-                            <ChatInfo key={selectedChat} selectedChat={selectedChat}/>
+                            <ChatWindow key={selectedChat} selectedChat={selectedChat}/>
                         )}
                     </div>
                 </main>

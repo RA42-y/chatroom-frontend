@@ -4,8 +4,13 @@ import axios from "axios";
 import {Button, Col, Form, Row, Spinner} from "react-bootstrap";
 import ChatOperationDropdown from "./ChatOperationDropdown";
 import MemberList from "./MemberList";
+import {faPaperPlane, faPencil, faRightFromBracket, faUserPen} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import MessageSent from "./MessageSent";
+import MessageReceived from "./MessageReceived";
 
-class ChatInfo extends Component {
+
+class ChatWindow extends Component {
 
     constructor(props) {
         super(props);
@@ -63,7 +68,26 @@ class ChatInfo extends Component {
                 </Row>
                 <Row className={"chat-message-info"}>
                     <Col sm={8} className={"chat-message-window"}>
-
+                        <Row className={"message-area"}>
+                            <MessageSent message={"hello there"} timestamp={"10:30"}/>
+                            <MessageReceived message={"general kenobi"} timestamp={"10:33"} sender={"sender"}/>
+                        </Row>
+                        <Row className={"message-form"}>
+                            <Col sm={12} >
+                                <Form>
+                                    <Row>
+                                        <Col sm={10}>
+                                            <Form.Control type="text" placeholder="Type your message here"/>
+                                        </Col>
+                                        <Col sm={2}>
+                                            <Button variant="primary" type="submit">
+                                                <FontAwesomeIcon icon={faPaperPlane} style={{width: '1.5em'}}/>
+                                            </Button>
+                                        </Col>
+                                    </Row>
+                                </Form>
+                            </Col>
+                        </Row>
                     </Col>
                     <Col sm={4} className={"member-info-column"}>
                         <Row>
@@ -76,22 +100,11 @@ class ChatInfo extends Component {
                             <h5 style={{marginTop: '1em'}}><strong>Members</strong></h5>
                             <MemberList members={chatInfo.members}/>
                         </Row>
-                    </Col>
-                </Row>
-                <Row className={"message-form"}>
-                    <Col sm={12} >
-                        <Form>
-                            <Row>
-                                <Col sm={10}>
-                                    <Form.Control type="text" placeholder="Type your message here"/>
-                                </Col>
-                                <Col sm={2}>
-                                    <Button variant="primary" type="submit">
-                                        Send
-                                    </Button>
-                                </Col>
-                            </Row>
-                        </Form>
+                        {/*<Row>*/}
+                        {/*    <Button className={"edit-member-btn"} style={{marginTop: '1em'}}>*/}
+                        {/*        <FontAwesomeIcon icon={faUserPen} style={{width: '1.5em', marginLeft:'-0.45em', fontSize: '1.2em'}}/>*/}
+                        {/*    </Button>*/}
+                        {/*</Row>*/}
                     </Col>
                 </Row>
             </div>
@@ -100,4 +113,4 @@ class ChatInfo extends Component {
     }
 }
 
-export default ChatInfo;
+export default ChatWindow;

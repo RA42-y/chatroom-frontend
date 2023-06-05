@@ -1,5 +1,9 @@
 import Card from 'react-bootstrap/Card';
 import UserDefaultAvatar from "../assets/default-user-avatar.png"
+import {faPaperPlane, faPencil, faRightFromBracket, faUserPen, faCircleCheck} from '@fortawesome/free-solid-svg-icons';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import React from "react";
+import {Row} from "react-bootstrap";
 
 const MemberCard = ({member}) => {
 
@@ -8,10 +12,12 @@ const MemberCard = ({member}) => {
             <Card.Body>
                 <div className="d-flex flex-row">
                     <img src={UserDefaultAvatar} className={"avatar user-avatar"}/>
-                    <div className={"flex-column"} style={{ textAlign: 'left'}}>
+                    <div className={"flex-column"} style={{textAlign: 'left'}}>
                         <Card.Title>{member.firstName} {member.lastName}</Card.Title>
                         <Card.Text>
-                            {member.email}
+                            {/*{member.email}*/}
+                            {/*<br/>*/}
+                            <FontAwesomeIcon icon={faCircleCheck} style={{width: '1.5em', color: 'green'}}/> Online
                         </Card.Text>
                     </div>
                 </div>

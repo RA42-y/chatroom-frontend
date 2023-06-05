@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
-class ScheduleChatForm extends Component {
+class ScheduleChatPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -74,4 +74,4 @@ class ScheduleChatForm extends Component {
     }
 }
 
-export default ScheduleChatForm;
+export default ScheduleChatPage;

@@ -190,6 +190,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 1.5em;
 }
 
 .hide-dropdown-arrow::after {
@@ -238,26 +239,34 @@ h2 {
 }
 
 .chat-message-info {
-    height: 88%;
-    padding: 0.5em;
+    height: 94%;
+    padding-right: 1em;
 }
 
 .chat-message-window {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
 
+.message-area {
+    margin-top: auto;
+    padding-left: 1em;
 }
 
 .member-info-column {
+    height: 100%;
     background-color: whitesmoke;
     border-radius: 10px;
     /*border-left: 1px solid #ccc;*/
     padding: 1em 0;
+    /*box-shadow: 0 2px 8px lightgray;*/
 }
 
-
 .message-form {
-    height: 6%;
+    height: 5%;
     padding-top: 0.5em;
-    margin-top: auto;
+    /*margin-top: auto;*/
     /*border-top: 1px solid #ccc;*/
 }
 
@@ -272,7 +281,17 @@ h2 {
 
 .member-card .card-body{
     padding: 1em;
-    font-size: x-small;
+    font-size: small;
+}
+
+.edit-member-btn {
+    border: none;
+    color: black;
+    background-color: lightgray;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    margin: 0 auto;
 }
 
 .user-avatar {
@@ -286,3 +305,18 @@ h2 {
     font-size: 1.2em;
 }
 
+.message-bubble {
+    border: none;
+    width: fit-content;
+}
+
+.message-bubble-sent {
+    border-radius: 20px 20px 0 20px;
+    background-color: #0d6efd;
+}
+
+.message-bubble-received {
+    border-radius: 20px 20px 20px 0;
+    background-color: whitesmoke;
+    padding: 0;
+}

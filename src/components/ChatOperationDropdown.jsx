@@ -1,7 +1,14 @@
 import React from 'react';
 import {Dropdown} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faCaretDown, faPenToSquare, faTrash, faRightFromBracket, faEllipsis} from '@fortawesome/free-solid-svg-icons';
+import {
+    faCaretDown,
+    faPenToSquare,
+    faTrash,
+    faRightFromBracket,
+    faEllipsis,
+    faUserPlus
+} from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
 const ChatOperationDropdown = ({chatId}) => {
@@ -39,12 +46,16 @@ const ChatOperationDropdown = ({chatId}) => {
         <div className="chat-info-dropdown">
             <Dropdown>
                 <Dropdown.Toggle variant="light" className="chat-info-dropdown-btn hide-dropdown-arrow">
-                    <FontAwesomeIcon icon={faEllipsis} className="dropdown-icon" style={{marginLeft: '-0.2em'}}/>
+                    <FontAwesomeIcon icon={faEllipsis} className="dropdown-icon" style={{marginLeft: '-0.5em'}}/>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className="chat-info-dropdown-menu">
                     <Dropdown.Item onClick={handleEdit} className="dropdown-operation-item dropdown-edit-item">
                         <FontAwesomeIcon icon={faPenToSquare} className="dropdown-icon"/>
                         <span className="dropdown-text">Edit</span>
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={handleEdit} className="dropdown-operation-item dropdown-edit-item">
+                        <FontAwesomeIcon icon={faUserPlus} className="dropdown-icon"/>
+                        <span className="dropdown-text">Invite</span>
                     </Dropdown.Item>
                     <Dropdown.Item onClick={handleDelete} className="dropdown-operation-item dropdown-delete-item">
                         <FontAwesomeIcon icon={faTrash} className="dropdown-icon" style={{color: 'red'}}/>
