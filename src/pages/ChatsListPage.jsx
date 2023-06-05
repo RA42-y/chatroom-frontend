@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import CustomPagination from '../components/CustomPagination';
 import axios from "axios";
 import {Spinner} from "react-bootstrap";
-import ChatInfo from "../components/ChatInfo";
 import ChatsList from "../components/ChatsList";
 import ChatWindow from "../components/ChatWindow";
 

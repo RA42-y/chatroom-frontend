@@ -1,14 +1,7 @@
 import React from 'react';
 import {Dropdown} from 'react-bootstrap';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {
-    faCaretDown,
-    faPenToSquare,
-    faTrash,
-    faRightFromBracket,
-    faEllipsis,
-    faUserPlus
-} from '@fortawesome/free-solid-svg-icons';
+import {faEllipsis, faPenToSquare, faRightFromBracket, faTrash, faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 
 const ChatOperationDropdown = ({chatId}) => {
