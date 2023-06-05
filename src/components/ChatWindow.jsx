@@ -18,6 +18,7 @@ class ChatWindow extends Component {
             selectedChat: this.props.selectedChat,
             chatInfo: null,
             isLoading: true,
+            userRole: ''
         };
     }
 
@@ -35,6 +36,11 @@ class ChatWindow extends Component {
                 const {data} = response.data;
                 console.log(data)
                 this.setState({chatInfo: data, isLoading: false});
+                if (data.creator.email === localStorage.getItem("loginUserEmail")) {
+                    this.setState({userRole: 'creator'});
+                } else {
+                    this.setState({userRole: 'member'});
+                }
             })
             .catch((error) => {
                 console.error('Request error: ' + error);
@@ -42,7 +48,7 @@ class ChatWindow extends Component {
     }
 
     render() {
-        const {chatInfo, isLoading} = this.state;
+        const {chatInfo, isLoading, userRole} = this.state;
 
         if (isLoading) {
             return (
@@ -63,7 +69,7 @@ class ChatWindow extends Component {
                         <h3><strong>{chatInfo.name}</strong></h3>
                     </Col>
                     <Col sm={1}>
-                        <ChatOperationDropdown chatId={chatInfo.id}/>
+                        <ChatOperationDropdown chatId={chatInfo.id} userRole={userRole}/>
                     </Col>
                 </Row>
                 <Row className={"chat-message-info"}>

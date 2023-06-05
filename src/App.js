@@ -7,8 +7,18 @@ import JoinedChatsListPage from "./pages/JoinedChatsListPage";
 import ChatsListPage from "./pages/ChatsListPage";
 import ChatPage from "./pages/ChatPage";
 import ScheduleChatPage from "./pages/ScheduleChatForm";
+import {useEffect} from "react";
 
-function App() {
+const App = () => {
+    useEffect(() => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get("token");
+        if (token) {
+            localStorage.setItem("token", token);
+            console.log(token)
+        }
+    }, []);
+
     return (
         <div className="" style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', flexDirection: 'row' }}>

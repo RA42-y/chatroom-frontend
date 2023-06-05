@@ -25,10 +25,12 @@ class CreatedChatsListPage extends Component {
     fetchChats = () => {
         const {currentPage} = this.state;
         const size = 7;
-        const url = `http://localhost:8080/chat/chat-list?page=${currentPage}&size=${size}`;
+        const url = `http://localhost:8080/chat/created-chat-list?page=${currentPage}&size=${size}`;
+        const token = localStorage.getItem("token");
+        console.log(token);
 
         // Make the API request using Axios
-        axios.get(url)
+        axios.get(url, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 const {data} = response.data;
                 console.log(data)
@@ -42,7 +44,7 @@ class CreatedChatsListPage extends Component {
     };
 
     handleChatCardClick = (id) => {
-        this.setState({ selectedChat: id }, () => {
+        this.setState({selectedChat: id}, () => {
             console.log(this.state.selectedChat);
         });
     };
@@ -90,7 +92,7 @@ class CreatedChatsListPage extends Component {
                         <h2>
                             <strong>Created Chats</strong>
                         </h2>
-                        <ChatsList chats={chats} onChatCardClick={this.handleChatCardClick} />
+                        <ChatsList chats={chats} onChatCardClick={this.handleChatCardClick}/>
                         <br/>
                         <CustomPagination currentPage={currentPage} totalPages={totalPages}
                                           onPageChange={this.handlePageChange}/>

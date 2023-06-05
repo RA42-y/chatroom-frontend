@@ -25,10 +25,12 @@ class ChatsListPage extends Component {
     fetchChats = () => {
         const {currentPage} = this.state;
         const size = 7;
-        const url = `http://localhost:8080/chat/chat-list?page=${currentPage}&size=${size}`;
+        const url = `http://localhost:8080/chat/my-chat-list?page=${currentPage}&size=${size}`;
+        const token = localStorage.getItem("token");
+        console.log(token);
 
         // Make the API request using Axios
-        axios.get(url)
+        axios.get(url, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 const {data} = response.data;
                 console.log(data)
