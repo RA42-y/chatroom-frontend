@@ -3,24 +3,24 @@ import UserDefaultAvatar from "../assets/default-user-avatar.png"
 import React, {useState} from "react";
 import {Button} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {faMinus} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const InviteUserCard = ({user, chatId}) => {
+const RemoveUserCard = ({user, chatId}) => {
 
-    const handleInvite = (e) => {
+    const handleRemove = (e) => {
         e.preventDefault();
-        const url = `http://localhost:8080/chat/invite-user/${chatId}`
+        const url = `http://localhost:8080/chat/remove-user/${chatId}`
         const token = localStorage.getItem("token");
         console.log(token);
 
         axios.put(url, {userId: user.id}, {headers: {"Authorization": `Bearer ${token}`}})
             .then(response => {
-                console.log('User invited successfully:', response.data);
+                console.log('User removed successfully:', response.data);
                 window.location.reload();
             })
             .catch(error => {
-                console.error('Error inviting user:', error);
+                console.error('Error removing user:', error);
             });
     };
 
@@ -41,8 +41,8 @@ const InviteUserCard = ({user, chatId}) => {
                         borderRadius: '50%',
                         width: '3em',
                         height: '3em'
-                    }} onClick={handleInvite}>
-                        <FontAwesomeIcon icon={faPlus}/>
+                    }} onClick={handleRemove}>
+                        <FontAwesomeIcon icon={faMinus}/>
                     </Button>
                 </div>
             </Card.Body>
@@ -50,4 +50,4 @@ const InviteUserCard = ({user, chatId}) => {
     );
 }
 
-export default InviteUserCard;
+export default RemoveUserCard;

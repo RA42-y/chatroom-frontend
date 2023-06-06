@@ -60,7 +60,7 @@ const CustomPagination = ({ totalPages, currentPage, onPageChange }) => {
 
     return (
         <div className={"chats-list-pagination"}>
-            <Pagination justify content-center>
+            <Pagination>
                 {renderPaginationItems()}
             </Pagination>
         </div>

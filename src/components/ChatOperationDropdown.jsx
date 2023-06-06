@@ -12,25 +12,13 @@ import {
 import axios from 'axios';
 import PopupModalEditChat from "./PopupModalEditChat";
 import PopupModalInviteUser from "./PopupModalInviteUser";
+import PopupModalRemoveUser from "./PopupModalRemoveUser";
 
 const ChatOperationDropdown = ({chatId, userRole}) => {
 
     const [showModalEditChat, setShowModalEditChat] = useState(false);
     const [showModalInviteUser, setShowModalInviteUser] = useState(false);
-
-    const handleRemove = () => {
-        const url =`http://localhost:8080/chat/remove-user/${chatId}`
-        const token = localStorage.getItem("token");
-        console.log(token);
-
-        axios.put(url, {headers: {"Authorization": `Bearer ${token}`}})
-            .then(response => {
-                console.log('User removed successfully:', response.data);
-            })
-            .catch(error => {
-                console.error('Error removing user:', error);
-            });
-    };
+    const [showModalRemoveUser, setShowModalRemoveUser] = useState(false);
 
     const handleDelete = () => {
         const url =`http://localhost:8080/chat/delete-chat/${chatId}`
@@ -76,6 +64,14 @@ const ChatOperationDropdown = ({chatId, userRole}) => {
         setShowModalInviteUser(false);
     };
 
+    const handleOpenModalRemoveUser = () => {
+        setShowModalRemoveUser(true);
+    };
+
+    const handleCloseModalRemoveUser = () => {
+        setShowModalRemoveUser(false);
+    };
+
 
     if (userRole === "creator") {
         return (
@@ -93,7 +89,7 @@ const ChatOperationDropdown = ({chatId, userRole}) => {
                             <FontAwesomeIcon icon={faUserPlus} className="dropdown-icon"/>
                             <span className="dropdown-text">Invite</span>
                         </Dropdown.Item>
-                        <Dropdown.Item onClick={handleRemove} className="dropdown-operation-item dropdown-edit-item">
+                        <Dropdown.Item onClick={handleOpenModalRemoveUser} className="dropdown-operation-item dropdown-edit-item">
                             <FontAwesomeIcon icon={faUserMinus} className="dropdown-icon"/>
                             <span className="dropdown-text">Remove</span>
                         </Dropdown.Item>
@@ -105,6 +101,7 @@ const ChatOperationDropdown = ({chatId, userRole}) => {
                 </Dropdown>
 
                 <PopupModalInviteUser show={showModalInviteUser} handleClose={handleCloseModalInviteUser} chatId={chatId}/>
+                <PopupModalRemoveUser show={showModalRemoveUser} handleClose={handleCloseModalRemoveUser} chatId={chatId}/>
                 <PopupModalEditChat show={showModalEditChat} handleClose={handleCloseModalEditChat} chatId={chatId}/>
 
             </div>
