@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import UserDefaultAvatar from "../assets/default-user-avatar.png"
+import UserDefaultAvatar from "../assets/pictures/default-user-avatar.png"
 import React from "react";
 import {Button} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -28,7 +28,7 @@ const InviteUserCard = ({user, chatId}) => {
         <Card className={'user-card member-card'}>
             <Card.Body>
                 <div className="d-flex flex-row">
-                    <img src={UserDefaultAvatar} className={"avatar user-avatar"}/>
+                    <img src={UserDefaultAvatar} alt={UserDefaultAvatar} className={"avatar user-avatar"}/>
                     <div className={"flex-column"} style={{textAlign: 'left'}}>
                         <Card.Title>{user.firstName} {user.lastName}</Card.Title>
                         <Card.Text>

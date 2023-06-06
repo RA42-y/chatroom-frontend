@@ -2,7 +2,7 @@ import {Nav, NavLink, Tab} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faComments, faPlusSquare, faUser, faCommenting} from "@fortawesome/free-regular-svg-icons";
 import {useState} from "react";
-import AppIcon from "../assets/app-icon.png"
+import AppIcon from "../assets/pictures/app-icon.png"
 import {useNavigate} from "react-router-dom";
 import UserInfoCard from "./UserInfoCard";
 

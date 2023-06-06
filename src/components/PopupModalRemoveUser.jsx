@@ -22,7 +22,7 @@ const PopupModalRemoveUser = ({show, handleClose, chatId}) => {
         };
 
         fetchUserList();
-    }, []);
+    }, [chatId]);
 
 
     return (
