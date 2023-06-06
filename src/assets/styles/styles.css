@@ -288,6 +288,10 @@ h2 {
     font-size: small;
 }
 
+.user-card .card-body {
+    font-size: unset;
+}
+
 .edit-member-btn {
     border: none;
     color: black;
