@@ -1,6 +1,6 @@
 import Card from 'react-bootstrap/Card';
 import UserDefaultAvatar from "../assets/default-user-avatar.png"
-import React, {useState} from "react";
+import React from "react";
 import {Button} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";

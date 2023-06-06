@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CustomPagination from '../components/CustomPagination';
+import ChatsListPagination from '../components/ChatsListPagination';
 import axios from "axios";
 import {Spinner} from "react-bootstrap";
 import ChatsList from "../components/ChatsList";
@@ -88,8 +88,8 @@ class CreatedChatsListPage extends Component {
                         </h2>
                         <ChatsList chats={chats} onChatCardClick={this.handleChatCardClick}/>
                         <br/>
-                        <CustomPagination currentPage={currentPage} totalPages={totalPages}
-                                          onPageChange={this.handlePageChange}/>
+                        <ChatsListPagination currentPage={currentPage} totalPages={totalPages}
+                                             onPageChange={this.handlePageChange}/>
                     </div>
                     <div className="chat-info-container">
                         {selectedChat !== null && (

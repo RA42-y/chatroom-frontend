@@ -28,6 +28,7 @@ const ChatOperationDropdown = ({chatId, userRole}) => {
         axios.delete(url, {headers: {"Authorization": `Bearer ${token}`}})
             .then(response => {
                 console.log('Chat deleted successfully:', response.data);
+                window.location.reload();
             })
             .catch(error => {
                 console.error('Error deleting chat:', error);
@@ -39,9 +40,10 @@ const ChatOperationDropdown = ({chatId, userRole}) => {
         const token = localStorage.getItem("token");
         console.log(token);
 
-        axios.post(url, {headers: {"Authorization": `Bearer ${token}`}})
+        axios.get(url, {headers: {"Authorization": `Bearer ${token}`}})
             .then(response => {
                 console.log('Chat quit successfully:', response.data);
+                window.location.reload();
             })
             .catch(error => {
                 console.error('Error quitting chat:', error);

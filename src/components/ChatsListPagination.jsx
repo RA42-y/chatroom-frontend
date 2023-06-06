@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
 
-const CustomPagination = ({ totalPages, currentPage, onPageChange }) => {
+const ChatsListPagination = ({ totalPages, currentPage, onPageChange }) => {
     const handlePageChange = (page) => {
         if (onPageChange) {
             onPageChange(page);
@@ -67,4 +67,4 @@ const CustomPagination = ({ totalPages, currentPage, onPageChange }) => {
     );
 };
 
-export default CustomPagination;
+export default ChatsListPagination;
