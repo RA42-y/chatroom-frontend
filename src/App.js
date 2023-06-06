@@ -2,11 +2,9 @@ import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import SideMenu from "./components/SideMenu";
 import CreatedChatsListPage from "./pages/CreatedChatsListPage";
-import ScheduleChatForm from "./pages/ScheduleChatForm";
+import ScheduleChatPage from "./pages/ScheduleChatForm";
 import JoinedChatsListPage from "./pages/JoinedChatsListPage";
 import ChatsListPage from "./pages/ChatsListPage";
-import ChatPage from "./pages/ChatPage";
-import ScheduleChatPage from "./pages/ScheduleChatForm";
 import {useEffect} from "react";
 
 const App = () => {
@@ -29,7 +27,6 @@ const App = () => {
                         <Route path="/created-chats" element={<CreatedChatsListPage/>}/>
                         <Route path="/joined-chats" element={<JoinedChatsListPage/>}/>
                         <Route path="/schedule-chat-form" element={<ScheduleChatPage/>}/>
-                        <Route path="/chat" element={<ChatPage/>}/>
                     </Routes>
                 </Router>
             </div>
