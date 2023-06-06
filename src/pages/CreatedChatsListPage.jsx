@@ -78,12 +78,6 @@ class CreatedChatsListPage extends Component {
             );
         }
 
-        const pageSize = 7;
-        // const startIndex = (currentPage - 1) * pageSize;
-        const startIndex = (currentPage) * pageSize;
-        const endIndex = startIndex + pageSize;
-        const slicedChats = chats.slice(startIndex, endIndex);
-
         return (
             <div className={"my-container"}>
                 {/*<SideMenu/>*/}
@@ -104,7 +98,6 @@ class CreatedChatsListPage extends Component {
                     </div>
                 </main>
             </div>
-
         );
     }
 }
