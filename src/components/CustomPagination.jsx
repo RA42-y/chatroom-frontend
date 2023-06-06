@@ -1,79 +1,70 @@
-import React, { Component } from 'react';
-import Pagination from 'react-bootstrap/Pagination';
+import React from 'react';
+import { Pagination } from 'react-bootstrap';
 
-class CustomPagination extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            currentPage: 1
-        };
-    }
-
-    handleClick = (page) => {
-        this.setState({ currentPage: page });
-        // Perform any necessary operations here, such as fetching data for the corresponding page
-        // this.fetchData(page);
+const CustomPagination = ({ totalPages, currentPage, onPageChange }) => {
+    const handlePageChange = (page) => {
+        if (onPageChange) {
+            onPageChange(page);
+        }
     };
 
-    render() {
-        const { currentPage } = this.state;
+    const renderPaginationItems = () => {
+        const paginationItems = [];
 
-        const pageItems = [];
-
-        // Add first page icon
-        pageItems.push(
+        paginationItems.push(
             <Pagination.First
                 key="first"
-                onClick={() => this.handleClick(1)}
-                disabled={currentPage === 1}
+                disabled={currentPage === 0}
+                onClick={() => handlePageChange(0)}
             />
         );
 
-        // Add previous page icon
-        pageItems.push(
+        paginationItems.push(
             <Pagination.Prev
-                key="prev"
-                onClick={() => this.handleClick(currentPage - 1)}
-                disabled={currentPage === 1}
+                key="previous"
+                disabled={currentPage === 0}
+                onClick={() => handlePageChange(currentPage - 1)}
             />
         );
 
-        // Add current page number
-        pageItems.push(
-            <Pagination.Item
-                key={currentPage}
-                active
-                onClick={() => this.handleClick(currentPage)}
-            >
-                {currentPage}
-            </Pagination.Item>
-        );
+        for (let i = 0; i < totalPages; i++) {
+            paginationItems.push(
+                <Pagination.Item
+                    key={i}
+                    active={i === currentPage}
+                    onClick={() => handlePageChange(i)}
+                >
+                    {i + 1}
+                </Pagination.Item>
+            );
+        }
 
-        // Add next page icon
-        pageItems.push(
+        paginationItems.push(
             <Pagination.Next
                 key="next"
-                onClick={() => this.handleClick(currentPage + 1)}
-                disabled={currentPage === this.props.totalPages}
+                disabled={currentPage === totalPages - 1}
+                onClick={() => handlePageChange(currentPage + 1)}
             />
         );
 
-        // Add last page icon
-        pageItems.push(
+        paginationItems.push(
             <Pagination.Last
                 key="last"
-                onClick={() => this.handleClick(this.props.totalPages)}
-                disabled={currentPage === this.props.totalPages}
+                disabled={currentPage === totalPages - 1}
+                onClick={() => handlePageChange(totalPages - 1)}
             />
         );
 
-        return (
-            <div className={"chats-list-pagination"}>
-                <Pagination>{pageItems}</Pagination>
-            </div>
+        return paginationItems;
+    };
 
-        );
-    }
-}
+    return (
+        <div className={"chats-list-pagination"}>
+            <Pagination justify content-center>
+                {renderPaginationItems()}
+            </Pagination>
+        </div>
+    );
+};
 
 export default CustomPagination;

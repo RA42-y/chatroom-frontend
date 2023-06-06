@@ -52,6 +52,8 @@ footer {
     width: 30%;
     min-width: 300px;
     margin: 2em 1em 0.5em 1em;
+    display: flex;
+    flex-direction: column;
 }
 
 #schedule-chat-form {
@@ -161,8 +163,10 @@ h2 {
 }
 
 .chats-list-pagination {
+    margin-top: auto;
     display: flex;
     justify-content: center;
+    margin-bottom: 0.5em;
 }
 
 .chat-info-dropdown {

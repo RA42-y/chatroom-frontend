@@ -24,7 +24,7 @@ class ChatsListPage extends Component {
 
     fetchChats = () => {
         const {currentPage} = this.state;
-        const size = 7;
+        const size = 5;
         const url = `http://localhost:8080/chat/my-chat-list?page=${currentPage}&size=${size}`;
         const token = localStorage.getItem("token");
         console.log(token);

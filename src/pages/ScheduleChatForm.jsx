@@ -7,21 +7,22 @@ class ScheduleChatPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            chatName: '',
+            name: '',
             description: ''
         };
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const {chatName, description} = this.state;
+        const {name, description} = this.state;
 
-        axios.post('/chat/create-chat', {chatName, description})
+        const url = 'http://localhost:8080/chat/create-chat'
+        const token = localStorage.getItem("token");
+
+        axios.post(url, {name, description}, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
-                // Handle successful response
                 console.log('Chat created successfully:', response.data);
-                // Reset form values
-                this.setState({chatName: '', description: ''});
+                this.setState({name: '', description: ''});
             })
             .catch((error) => {
                 // Handle error
@@ -34,7 +35,7 @@ class ScheduleChatPage extends Component {
     };
 
     render() {
-        const {chatName, description} = this.state;
+        const {name, description} = this.state;
 
         return (
             <main>
@@ -46,9 +47,9 @@ class ScheduleChatPage extends Component {
                         <Form.Label>Chat Name</Form.Label>
                         <Form.Control
                             type="text"
-                            name="chatName"
+                            name="name"
                             placeholder="Enter chat name"
-                            value={chatName}
+                            value={name}
                             onChange={this.handleInputChange}
                         />
                     </Form.Group>
