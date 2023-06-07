@@ -10,7 +10,7 @@ const MessageReceived = ({message, timestamp, sender}) => {
             <Row>
                 <Card className="message-bubble message-bubble-received float-left">
                     <Card.Body style={{padding: '0.5em 1em'}}>
-                        <Card.Text style={{color: 'black', marginBottom: '0.5em'}}>{message}</Card.Text>
+                        <Card.Text style={{color: 'black', marginBottom: '0.5em', textAlign: 'left'}}>{message}</Card.Text>
                         <Card.Subtitle style={{
                             color: 'dimgray',
                             fontSize: 'x-small',

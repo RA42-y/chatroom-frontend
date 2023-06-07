@@ -13,10 +13,10 @@ const MemberCard = ({member}) => {
                     <img src={UserDefaultAvatar} alt={UserDefaultAvatar} className={"avatar user-avatar"}/>
                     <div className={"flex-column"} style={{textAlign: 'left'}}>
                         <Card.Title>{member.firstName} {member.lastName}</Card.Title>
-                        <Card.Text>
-                            {/*{member.email}*/}
+                        <Card.Text style={{fontSize: 'smaller'}}>
+                            {member.email}
                             {/*<br/>*/}
-                            <FontAwesomeIcon icon={faCircleCheck} style={{width: '1.5em', color: 'green'}}/> Online
+                            {/*<FontAwesomeIcon icon={faCircleCheck} style={{width: '1.5em', color: 'green'}}/> Online*/}
                         </Card.Text>
                     </div>
                 </div>

@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import MemberCard from "./MemberCard";
 import axios from "axios";
-import {Button, Col, Form, Row, Spinner} from "react-bootstrap";
+import {Col, Row, Spinner} from "react-bootstrap";
 import ChatOperationDropdown from "./ChatOperationDropdown";
 import MemberList from "./MemberList";
-import {faPaperPlane} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import MessageSent from "./MessageSent";
-import MessageReceived from "./MessageReceived";
+import MessageArea from "./MessageArea";
 
 
 class ChatWindow extends Component {
@@ -65,7 +62,7 @@ class ChatWindow extends Component {
         return (
             <div className={"chat-window"}>
                 <Row className={"chat-window-header"}>
-                    <Col sm={11} >
+                    <Col sm={11}>
                         <h3><strong>{chatInfo.name}</strong></h3>
                     </Col>
                     <Col sm={1}>
@@ -73,28 +70,9 @@ class ChatWindow extends Component {
                     </Col>
                 </Row>
                 <Row className={"chat-message-info"}>
-                    <Col sm={8} className={"chat-message-window"}>
-                        <Row className={"message-area"}>
-                            <MessageSent message={"hello"} timestamp={"10:30"}/>
-                            <MessageReceived message={"hello hello"} timestamp={"10:33"} sender={"sender"}/>
-                        </Row>
-                        <Row className={"message-form"}>
-                            <Col sm={12} >
-                                <Form>
-                                    <Row>
-                                        <Col sm={10}>
-                                            <Form.Control type="text" placeholder="Type your message here"/>
-                                        </Col>
-                                        <Col sm={2}>
-                                            <Button variant="primary" type="submit">
-                                                <FontAwesomeIcon icon={faPaperPlane} style={{width: '1.5em'}}/>
-                                            </Button>
-                                        </Col>
-                                    </Row>
-                                </Form>
-                            </Col>
-                        </Row>
-                    </Col>
+
+                    <MessageArea chatId={chatInfo.id}/>
+
                     <Col sm={4} className={"member-info-column"}>
                         <Row>
                             <h5><strong>Creator</strong></h5>
