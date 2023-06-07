@@ -1,5 +1,5 @@
 import React from 'react';
-import ChatCard from '../components/ChatCard';
+import ChatCard from './ChatCard';
 
 
 const ChatsList = ({ chats, onChatCardClick }) => {

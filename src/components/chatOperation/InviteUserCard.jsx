@@ -1,26 +1,26 @@
 import Card from 'react-bootstrap/Card';
-import UserDefaultAvatar from "../assets/pictures/default-user-avatar.png"
+import UserDefaultAvatar from "../../assets/pictures/default-user-avatar.png"
 import React from "react";
 import {Button} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMinus} from "@fortawesome/free-solid-svg-icons";
+import {faPlus} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
-const RemoveUserCard = ({user, chatId}) => {
+const InviteUserCard = ({user, chatId}) => {
 
-    const handleRemove = (e) => {
+    const handleInvite = (e) => {
         e.preventDefault();
-        const url = `http://localhost:8080/chat/remove-user/${chatId}`
+        const url = `http://localhost:8080/chat/invite-user/${chatId}`
         const token = localStorage.getItem("token");
         console.log(token);
 
         axios.put(url, {userId: user.id}, {headers: {"Authorization": `Bearer ${token}`}})
             .then(response => {
-                console.log('User removed successfully:', response.data);
+                console.log('User invited successfully:', response.data);
                 window.location.reload();
             })
             .catch(error => {
-                console.error('Error removing user:', error);
+                console.error('Error inviting user:', error);
             });
     };
 
@@ -41,8 +41,8 @@ const RemoveUserCard = ({user, chatId}) => {
                         borderRadius: '50%',
                         width: '3em',
                         height: '3em'
-                    }} onClick={handleRemove}>
-                        <FontAwesomeIcon icon={faMinus}/>
+                    }} onClick={handleInvite}>
+                        <FontAwesomeIcon icon={faPlus}/>
                     </Button>
                 </div>
             </Card.Body>
@@ -50,4 +50,4 @@ const RemoveUserCard = ({user, chatId}) => {
     );
 }
 
-export default RemoveUserCard;
+export default InviteUserCard;

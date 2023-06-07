@@ -10,9 +10,9 @@ import {
     faUserPlus
 } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import PopupModalEditChat from "./PopupModalEditChat";
-import PopupModalInviteUser from "./PopupModalInviteUser";
-import PopupModalRemoveUser from "./PopupModalRemoveUser";
+import PopupModalEditChat from "../modal/PopupModalEditChat";
+import PopupModalInviteUser from "../modal/PopupModalInviteUser";
+import PopupModalRemoveUser from "../modal/PopupModalRemoveUser";
 
 const ChatOperationDropdown = ({chatId, userRole}) => {
 

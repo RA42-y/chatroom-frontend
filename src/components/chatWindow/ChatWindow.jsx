@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import MemberCard from "./MemberCard";
 import axios from "axios";
 import {Col, Row, Spinner} from "react-bootstrap";
-import ChatOperationDropdown from "./ChatOperationDropdown";
+import ChatOperationDropdown from "../chatOperation/ChatOperationDropdown";
 import MemberList from "./MemberList";
 import MessageArea from "./MessageArea";
 
@@ -73,7 +73,7 @@ class ChatWindow extends Component {
 
                     <MessageArea chatId={chatInfo.id}/>
 
-                    <Col sm={4} className={"member-info-column"}>
+                    <Col sm={4} className={"member-info-column"} style={{overflow: 'scroll'}}>
                         <Row>
                             <h5><strong>Creator</strong></h5>
                             <div>

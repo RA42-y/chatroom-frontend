@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import ChatsListPagination from '../components/ChatsListPagination';
+import ChatsListPagination from '../components/chatList/ChatsListPagination';
 import axios from "axios";
 import {Spinner} from "react-bootstrap";
-import ChatsList from "../components/ChatsList";
-import ChatWindow from "../components/ChatWindow";
+import ChatsList from "../components/chatList/ChatsList";
+import ChatWindow from "../components/chatWindow/ChatWindow";
 
 
 class JoinedChatsListPage extends Component {
@@ -24,7 +24,7 @@ class JoinedChatsListPage extends Component {
 
     fetchChats = () => {
         const {currentPage} = this.state;
-        const size = 5;
+        const size = 6;
         const url = `http://localhost:8080/chat/joined-chat-list?page=${currentPage}&size=${size}`;
         const token = localStorage.getItem("token");
         console.log(token);

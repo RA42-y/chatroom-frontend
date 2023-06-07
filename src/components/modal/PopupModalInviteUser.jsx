@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {Modal} from 'react-bootstrap';
 import axios from 'axios';
-import RemoveUserList from "./RemoveUserList";
+import InviteUserList from "../chatOperation/InviteUserList";
 
-const PopupModalRemoveUser = ({show, handleClose, chatId}) => {
+const PopupModalInviteUser = ({show, handleClose, chatId}) => {
     const [users, setUsers] = useState({});
 
     useEffect(() => {
         const fetchUserList = () => {
-            const url = `http://localhost:8080/chat/member-list/${chatId}`;
+            const url = `http://localhost:8080/user/all-user-list`;
             axios
                 .get(url)
                 .then((response) => {
@@ -22,19 +22,19 @@ const PopupModalRemoveUser = ({show, handleClose, chatId}) => {
         };
 
         fetchUserList();
-    }, [chatId]);
+    }, []);
 
 
     return (
-        <Modal show={show} onHide={handleClose} centered className={"modal-remove-user"}>
+        <Modal show={show} onHide={handleClose} centered className={"modal-invite-user"}>
             <Modal.Header closeButton>
-                <Modal.Title>Remove user</Modal.Title>
+                <Modal.Title>Invite user</Modal.Title>
             </Modal.Header>
             <Modal.Body style={{maxHeight: '70vh', overflow: 'scroll'}}>
-                <RemoveUserList users={users} chatId={chatId}/>
+                <InviteUserList users={users} chatId={chatId}/>
             </Modal.Body>
         </Modal>
     );
 };
 
-export default PopupModalRemoveUser;
+export default PopupModalInviteUser;

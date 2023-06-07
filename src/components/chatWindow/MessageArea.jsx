@@ -1,14 +1,14 @@
 import React, {Component} from "react";
 import {Col, Row} from "react-bootstrap";
-import MessageReceived from "./MessageReceived";
-import MessageSent from "./MessageSent";
+import MessageReceived from "../message/MessageReceived";
+import MessageSent from "../message/MessageSent";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faPaperPlane} from "@fortawesome/free-solid-svg-icons";
-import MessageJoin from "./MessageJoin";
-import MessageLeave from "./MessageLeave";
-import MessageOnline from "./MessageOnline";
+import MessageJoin from "../message/MessageJoin";
+import MessageLeave from "../message/MessageLeave";
+import MessageOnline from "../message/MessageOnline";
 
 class MessageArea extends Component {
     constructor(props) {

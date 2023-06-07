@@ -1,7 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import UserDefaultAvatar from "../assets/pictures/default-user-avatar.png"
-import {faCircleCheck} from '@fortawesome/free-solid-svg-icons';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import UserDefaultAvatar from "../../assets/pictures/default-user-avatar.png"
 import React from "react";
 
 const MemberCard = ({member}) => {
@@ -15,8 +13,6 @@ const MemberCard = ({member}) => {
                         <Card.Title>{member.firstName} {member.lastName}</Card.Title>
                         <Card.Text style={{fontSize: 'smaller'}}>
                             {member.email}
-                            {/*<br/>*/}
-                            {/*<FontAwesomeIcon icon={faCircleCheck} style={{width: '1.5em', color: 'green'}}/> Online*/}
                         </Card.Text>
                     </div>
                 </div>

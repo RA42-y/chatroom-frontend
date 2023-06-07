@@ -1,11 +1,12 @@
 import './App.css';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import SideMenu from "./components/SideMenu";
+import SideMenu from "./components/sideMenu/SideMenu";
 import CreatedChatsListPage from "./pages/CreatedChatsListPage";
 import ScheduleChatPage from "./pages/ScheduleChatForm";
 import JoinedChatsListPage from "./pages/JoinedChatsListPage";
 import ChatsListPage from "./pages/ChatsListPage";
 import {useEffect} from "react";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
     useEffect(() => {
@@ -30,9 +31,7 @@ const App = () => {
                     </Routes>
                 </Router>
             </div>
-            <footer>
-                <p>SR03 P23 - Chatroom - Jieni YU & Zhuzexuan SHI</p>
-            </footer>
+            <Footer/>
         </div>
     );
 }
