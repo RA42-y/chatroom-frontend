@@ -1,4 +1,3 @@
-import Card from 'react-bootstrap/Card';
 import React from "react";
 import {Row} from "react-bootstrap";
 
