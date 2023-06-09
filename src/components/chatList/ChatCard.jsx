@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import ChatIcon from "../../assets/pictures/chat-icon.png"
+import ChatIcon from "../../assets/images/chat-icon.png"
 
 function ChatCard(props) {
     const { chatName, description } = props;

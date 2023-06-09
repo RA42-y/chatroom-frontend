@@ -71,24 +71,33 @@ class ChatWindow extends Component {
                 </Row>
                 <Row className={"chat-message-info"}>
 
-                    <MessageArea chatId={chatInfo.id}/>
+                    {!chatInfo.expireDate || new Date(chatInfo.expireDate) > new Date() ? (
+                        <MessageArea chatId={chatInfo.id}/>
+                    ) : <Col sm={8} className={"chat-message-window d-flex align-items-center"}><p className="m-auto" style={{color: 'dimgray'}}>This chat has been expired.</p></Col>}
 
                     <Col sm={4} className={"member-info-column"} style={{overflow: 'scroll'}}>
                         <Row>
+                            <h5><strong>Create date</strong></h5>
+                            <div>
+                                <p style={{fontSize: 'smaller'}}>{chatInfo.createDate ? new Date(chatInfo.createDate).toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }) : ''}</p>
+                            </div>
+                        </Row>
+                        <Row style={{marginTop: '1em'}}>
+                            <h5><strong>Expire date</strong></h5>
+                            <div>
+                                <p style={{fontSize: 'smaller'}}>{chatInfo.expireDate ? new Date(chatInfo.expireDate).toLocaleString('fr-FR', { timeZone: 'Europe/Paris' }) : ''}</p>
+                            </div>
+                        </Row>
+                        <Row style={{marginTop: '1em'}}>
                             <h5><strong>Creator</strong></h5>
                             <div>
                                 <MemberCard id={chatInfo.creator.id} member={chatInfo.creator}/>
                             </div>
                         </Row>
-                        <Row className={"member-list"}>
-                            <h5 style={{marginTop: '1em'}}><strong>Members</strong></h5>
+                        <Row className={"member-list"} style={{marginTop: '1em'}}>
+                            <h5><strong>Members</strong></h5>
                             <MemberList members={chatInfo.members}/>
                         </Row>
-                        {/*<Row>*/}
-                        {/*    <Button className={"edit-member-btn"} style={{marginTop: '1em'}}>*/}
-                        {/*        <FontAwesomeIcon icon={faUserPen} style={{width: '1.5em', marginLeft:'-0.45em', fontSize: '1.2em'}}/>*/}
-                        {/*    </Button>*/}
-                        {/*</Row>*/}
                     </Col>
                 </Row>
             </div>

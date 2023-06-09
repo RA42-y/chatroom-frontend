@@ -2,24 +2,32 @@ import React, {Component} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import DateTimePicker from 'react-datetime';
+import moment from "moment";
 
 class ScheduleChatPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             name: '',
-            description: ''
+            description: '',
+            expireDate: moment().format('DD/MM/YYYY HH:mm:ss'),
         };
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        const {name, description} = this.state;
+        const {name, description, expireDate} = this.state;
+
+        if (!moment(expireDate, 'DD/MM/YYYY HH:mm:ss', true).isValid()) {
+            console.error('Invalid date format');
+            return;
+        }
 
         const url = 'http://localhost:8080/chat/create-chat'
         const token = localStorage.getItem("token");
 
-        axios.post(url, {name, description}, {headers: {"Authorization": `Bearer ${token}`}})
+        axios.post(url, {name, description, expireDate}, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 console.log('Chat created successfully:', response.data);
                 this.setState({name: '', description: ''});
@@ -35,7 +43,7 @@ class ScheduleChatPage extends Component {
     };
 
     render() {
-        const {name, description} = this.state;
+        const {name, description, expireDate} = this.state;
 
         return (
             <main>
@@ -51,6 +59,7 @@ class ScheduleChatPage extends Component {
                             placeholder="Enter chat name"
                             value={name}
                             onChange={this.handleInputChange}
+                            required
                         />
                     </Form.Group>
 
@@ -63,8 +72,22 @@ class ScheduleChatPage extends Component {
                             placeholder="Enter chat description"
                             value={description}
                             onChange={this.handleInputChange}
+                            required
                         />
                     </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="expireDate">
+                        <Form.Label>Expiration Date and Time</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="expireDate"
+                            placeholder="DD/MM/YYYY HH:mm:ss"
+                            value={expireDate}
+                            onChange={this.handleInputChange}
+                            required
+                        />
+                    </Form.Group>
+
                     <br/>
                     <Button variant="primary" type="submit">
                         Create Chat

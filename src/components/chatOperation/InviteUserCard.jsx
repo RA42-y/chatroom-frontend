@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import UserDefaultAvatar from "../../assets/pictures/default-user-avatar.png"
+import UserDefaultAvatar from "../../assets/images/default-user-avatar.png"
 import React from "react";
 import {Button} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
