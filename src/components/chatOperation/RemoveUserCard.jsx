@@ -18,9 +18,14 @@ const RemoveUserCard = ({user, chatId}) => {
             .then(response => {
                 console.log('User removed successfully:', response.data);
                 window.location.reload();
+                localStorage.setItem('alertMessage', `User "${user.email}" removed successfully.`);
+                localStorage.setItem('alertType', 'success');
             })
             .catch(error => {
                 console.error('Error removing user:', error);
+                localStorage.setItem('alertMessage', `Error removing user "${user.email}".`);
+                localStorage.setItem('alertType', 'danger');
+                window.location.reload();
             });
     };
 

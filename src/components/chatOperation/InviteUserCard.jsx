@@ -18,9 +18,14 @@ const InviteUserCard = ({user, chatId}) => {
             .then(response => {
                 console.log('User invited successfully:', response.data);
                 window.location.reload();
+                localStorage.setItem('alertMessage', `User "${user.email}" invited successfully.`);
+                localStorage.setItem('alertType', 'success');
             })
             .catch(error => {
                 console.error('Error inviting user:', error);
+                localStorage.setItem('alertMessage', `Error inviting user "${user.email}".`);
+                localStorage.setItem('alertType', 'danger');
+                window.location.reload();
             });
     };
 

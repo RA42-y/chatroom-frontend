@@ -30,11 +30,16 @@ class ScheduleChatPage extends Component {
         axios.post(url, {name, description, expireDate}, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 console.log('Chat created successfully:', response.data);
+                localStorage.setItem('alertMessage', `Chat "${name}" created successfully.`);
+                localStorage.setItem('alertType', 'success');
                 this.setState({name: '', description: ''});
+                window.location.reload();
             })
             .catch((error) => {
-                // Handle error
                 console.error('Error creating chat:', error);
+                localStorage.setItem('alertMessage', `Error creating chat: The expiration date and time must be after the current time.`);
+                localStorage.setItem('alertType', 'danger');
+                window.location.reload();
             });
     };
 

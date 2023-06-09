@@ -28,10 +28,15 @@ const ChatOperationDropdown = ({chatId, userRole}) => {
         axios.delete(url, {headers: {"Authorization": `Bearer ${token}`}})
             .then(response => {
                 console.log('Chat deleted successfully:', response.data);
+                localStorage.setItem('alertMessage', `Delete chat successfully.`);
+                localStorage.setItem('alertType', 'success');
                 window.location.reload();
             })
             .catch(error => {
                 console.error('Error deleting chat:', error);
+                localStorage.setItem('alertMessage', `Error deleting chat.`);
+                localStorage.setItem('alertType', 'danger');
+                window.location.reload();
             });
     };
 
@@ -43,10 +48,15 @@ const ChatOperationDropdown = ({chatId, userRole}) => {
         axios.get(url, {headers: {"Authorization": `Bearer ${token}`}})
             .then(response => {
                 console.log('Chat quit successfully:', response.data);
+                localStorage.setItem('alertMessage', `Quit chat successfully.`);
+                localStorage.setItem('alertType', 'success');
                 window.location.reload();
             })
             .catch(error => {
                 console.error('Error quitting chat:', error);
+                localStorage.setItem('alertMessage', `Error quitting chat.`);
+                localStorage.setItem('alertType', 'danger');
+                window.location.reload();
             });
     };
 

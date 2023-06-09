@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Form, Modal} from 'react-bootstrap';
 import axios from 'axios';
+import moment from "moment/moment";
 
 const PopupModalEditChat = ({show, handleClose, chatId}) => {
     const [chatName, setChatName] = useState('');
     const [chatDescription, setChatDescription] = useState('');
+    const [chatExpireDate, setChatExpireDate] = useState(moment().format('DD/MM/YYYY HH:mm:ss'));
+
 
     useEffect(() => {
         const fetchChatInfo = () => {
@@ -16,6 +19,7 @@ const PopupModalEditChat = ({show, handleClose, chatId}) => {
                     console.log(data);
                     setChatName(data.name);
                     setChatDescription(data.description);
+                    setChatExpireDate(moment(data.expireDate).format('DD/MM/YYYY HH:mm:ss'));
                 })
                 .catch((error) => {
                     console.error('Request error: ' + error);
@@ -31,15 +35,19 @@ const PopupModalEditChat = ({show, handleClose, chatId}) => {
         const token = localStorage.getItem("token");
         console.log(token);
 
-        axios.post(url, {name: chatName, description: chatDescription}, {headers: {"Authorization": `Bearer ${token}`}})
+        axios.post(url, {name: chatName, description: chatDescription, expireDate: chatExpireDate}, {headers: {"Authorization": `Bearer ${token}`}})
             .then((response) => {
                 console.log('Chat edited successfully:', response.data);
+                localStorage.setItem('alertMessage', `Chat "${chatName}" edited successfully.`);
+                localStorage.setItem('alertType', 'success');
                 handleClose();
                 window.location.reload();
             })
             .catch((error) => {
-                // Handle error
                 console.error('Error editing chat:', error);
+                localStorage.setItem('alertMessage', `Error editing chat "${chatName}": The expiration date and time must be after the current time.`);
+                localStorage.setItem('alertType', 'danger');
+                window.location.reload();
             });
     };
 
@@ -58,6 +66,7 @@ const PopupModalEditChat = ({show, handleClose, chatId}) => {
                             placeholder="Enter chat name"
                             value={chatName || ''}
                             onChange={(e) => setChatName(e.target.value)}
+                            required
                         />
                     </Form.Group>
 
@@ -70,8 +79,22 @@ const PopupModalEditChat = ({show, handleClose, chatId}) => {
                             placeholder="Enter chat description"
                             value={chatDescription || ''}
                             onChange={(e) => setChatDescription(e.target.value)}
+                            required
                         />
                     </Form.Group>
+
+                    <Form.Group className="mb-3" controlId="expireDate">
+                        <Form.Label>Expiration Date and Time</Form.Label>
+                        <Form.Control
+                            type="text"
+                            name="expireDate"
+                            placeholder="DD/MM/YYYY HH:mm:ss"
+                            value={chatExpireDate || moment().format('DD/MM/YYYY HH:mm:ss')}
+                            onChange={(e) => setChatExpireDate(e.target.value)}
+                            required
+                        />
+                    </Form.Group>
+
                     <br/>
                     <Button variant="primary" type="submit">
                         Submit

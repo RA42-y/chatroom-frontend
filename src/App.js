@@ -7,8 +7,10 @@ import JoinedChatsListPage from "./pages/JoinedChatsListPage";
 import ChatsListPage from "./pages/ChatsListPage";
 import {useEffect} from "react";
 import Footer from "./components/footer/Footer";
+import AlertMessage from "./components/alert/AlertMessage";
 
 const App = () => {
+
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
         const token = urlParams.get("token");
@@ -20,6 +22,7 @@ const App = () => {
 
     return (
         <div className="" style={{ display: 'flex', flexDirection: 'column' }}>
+            <AlertMessage/>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
                 <Router>
                     <SideMenu/>
