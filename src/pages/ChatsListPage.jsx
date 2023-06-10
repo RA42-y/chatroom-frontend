@@ -4,6 +4,7 @@ import axios from "axios";
 import {Spinner} from "react-bootstrap";
 import ChatsList from "../components/chatList/ChatsList";
 import ChatWindow from "../components/chatWindow/ChatWindow";
+import EmptyList from "../components/chatList/EmptyList";
 
 
 class ChatsListPage extends Component {
@@ -44,7 +45,7 @@ class ChatsListPage extends Component {
     };
 
     handleChatCardClick = (id) => {
-        this.setState({ selectedChat: id }, () => {
+        this.setState({selectedChat: id}, () => {
             console.log(this.state.selectedChat);
         });
     };
@@ -86,10 +87,16 @@ class ChatsListPage extends Component {
                         <h2>
                             <strong>My Chats</strong>
                         </h2>
-                        <ChatsList chats={chats} onChatCardClick={this.handleChatCardClick} />
-                        <br/>
-                        <ChatsListPagination currentPage={currentPage} totalPages={totalPages}
-                                             onPageChange={this.handlePageChange}/>
+                        {chats.length !== 0 ? (
+                            <div style={{display: 'flex', flexDirection: 'column', height: '100%'}}>
+                                <ChatsList chats={chats} onChatCardClick={this.handleChatCardClick}/>
+                                <br/>
+                                <ChatsListPagination currentPage={currentPage} totalPages={totalPages}
+                                                     onPageChange={this.handlePageChange}/>
+                            </div>
+                        ) : (
+                            <EmptyList/>
+                        )}
                     </div>
                     <div className="chat-info-container">
                         {selectedChat !== null && (

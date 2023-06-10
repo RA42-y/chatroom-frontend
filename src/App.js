@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import SideMenu from "./components/sideMenu/SideMenu";
 import CreatedChatsListPage from "./pages/CreatedChatsListPage";
 import ScheduleChatPage from "./pages/ScheduleChatForm";
@@ -18,8 +18,12 @@ const App = () => {
             localStorage.setItem("token", token);
             console.log(token)
         } else {
-            window.location.href = 'http://localhost:8080/login'; // Redirect to the login page
+            const token = localStorage.getItem("token");
+            if (token === null) {
+                window.location.href = 'http://localhost:8080/login'; // Redirect to the login page
+            }
         }
+
     }, []);
 
     return (

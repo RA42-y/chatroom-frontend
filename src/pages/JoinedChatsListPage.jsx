@@ -4,6 +4,7 @@ import axios from "axios";
 import {Spinner} from "react-bootstrap";
 import ChatsList from "../components/chatList/ChatsList";
 import ChatWindow from "../components/chatWindow/ChatWindow";
+import EmptyList from "../components/chatList/EmptyList";
 
 
 class JoinedChatsListPage extends Component {
@@ -86,10 +87,16 @@ class JoinedChatsListPage extends Component {
                         <h2>
                             <strong>Joined Chats</strong>
                         </h2>
-                        <ChatsList chats={chats} onChatCardClick={this.handleChatCardClick} />
-                        <br/>
-                        <ChatsListPagination currentPage={currentPage} totalPages={totalPages}
-                                             onPageChange={this.handlePageChange}/>
+                        {chats.length !== 0 ? (
+                            <div style={{display: 'flex', flexDirection: 'column', height: '100%'}}>
+                                <ChatsList chats={chats} onChatCardClick={this.handleChatCardClick}/>
+                                <br/>
+                                <ChatsListPagination currentPage={currentPage} totalPages={totalPages}
+                                                     onPageChange={this.handlePageChange}/>
+                            </div>
+                        ) : (
+                            <EmptyList/>
+                        )}
                     </div>
                     <div className="chat-info-container">
                         {selectedChat !== null && (

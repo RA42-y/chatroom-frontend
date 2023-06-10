@@ -140,12 +140,6 @@ h2 {
     margin: 0.2em;
 }
 
-.custom-active-nav {
-    background-color: red; /* Set your desired background color */
-    color: white; /* Set your desired text color */
-    /* Add any additional styles you want */
-}
-
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
     color: black;
     background-color: lightgray;

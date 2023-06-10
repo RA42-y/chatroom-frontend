@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-import DateTimePicker from 'react-datetime';
 import moment from "moment";
 
 class ScheduleChatPage extends Component {
