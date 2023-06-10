@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes, useNavigate} from 'react-router-dom';
 import SideMenu from "./components/sideMenu/SideMenu";
 import CreatedChatsListPage from "./pages/CreatedChatsListPage";
 import ScheduleChatPage from "./pages/ScheduleChatForm";
@@ -17,13 +17,15 @@ const App = () => {
         if (token) {
             localStorage.setItem("token", token);
             console.log(token)
+        } else {
+            window.location.href = 'http://localhost:8080/login'; // Redirect to the login page
         }
     }, []);
 
     return (
-        <div className="" style={{ display: 'flex', flexDirection: 'column' }}>
+        <div className="" style={{display: 'flex', flexDirection: 'column'}}>
             <AlertMessage/>
-            <div style={{ display: 'flex', flexDirection: 'row' }}>
+            <div style={{display: 'flex', flexDirection: 'row'}}>
                 <Router>
                     <SideMenu/>
                     <Routes>

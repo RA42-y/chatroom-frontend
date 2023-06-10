@@ -39,6 +39,22 @@ class UserInfoCard extends Component {
             });
     };
 
+    handleLogout = () => {
+        const url = `http://localhost:8080/login/logout`
+        const token = localStorage.getItem("token");
+        console.log(token);
+        localStorage.removeItem("token");
+
+        axios.get(url, {headers: {"Authorization": `Bearer ${token}`}})
+            .then(response => {
+                console.log('Logout successfully:', response.data);
+                window.location.href = 'http://localhost:8080/login?logout';
+            })
+            .catch(error => {
+                console.error('Error logging out:', error);
+            });
+    };
+
     openNewTab = (url) => {
         window.open(url);
     };
@@ -66,14 +82,23 @@ class UserInfoCard extends Component {
                     <Card.Text>
                         {userInfo.email}
                     </Card.Text>
-                    <Button variant="text" style={{color: '#0d6efd'}}><FontAwesomeIcon
-                        icon={faRightFromBracket}/> Logout</Button>
-                    <Button variant="text" style={{color: '#0d6efd'}} onClick={() => this.openNewTab('http://localhost:8080/doc.html#/home')}>
-                        <FontAwesomeIcon icon={faBook}/> API documentation
-                    </Button>
-                    <Button variant="text" style={{color: '#0d6efd'}} onClick={() => this.openNewTab('http://localhost:8080/admin/user-list')}>
-                        <FontAwesomeIcon icon={faScrewdriverWrench}/> Admin site
-                    </Button>
+                    <div style={{display: "flex", flexDirection: "column"}}>
+                        <Button variant="text" style={{color: '#0d6efd'}} onClick={this.handleLogout}>
+                            <FontAwesomeIcon icon={faRightFromBracket}/> Logout
+                        </Button>
+                        {userInfo.admin && (
+                            <div>
+                                <Button variant="text" style={{color: '#0d6efd'}}
+                                        onClick={() => this.openNewTab('http://localhost:8080/admin/user-list')}>
+                                    <FontAwesomeIcon icon={faScrewdriverWrench}/> Admin site
+                                </Button>
+                                <Button variant="text" style={{color: '#0d6efd'}}
+                                        onClick={() => this.openNewTab('http://localhost:8080/doc.html#/home')}>
+                                    <FontAwesomeIcon icon={faBook}/> API documentation
+                                </Button>
+                            </div>
+                        )}
+                    </div>
                 </Card.Body>
             </Card>
         )
