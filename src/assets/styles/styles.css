@@ -2,11 +2,6 @@ body {
     overflow: hidden;
 }
 
-/*.App {*/
-/*    text-align: left;*/
-/*    flex-direction: row;*/
-/*}*/
-
 .my-container {
     display: flex;
 }

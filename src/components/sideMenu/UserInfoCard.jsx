@@ -87,7 +87,7 @@ class UserInfoCard extends Component {
                             <FontAwesomeIcon icon={faRightFromBracket}/> Logout
                         </Button>
                         {userInfo.admin && (
-                            <div>
+                            <div style={{display: "flex", flexDirection: "column"}}>
                                 <Button variant="text" style={{color: '#0d6efd'}}
                                         onClick={() => this.openNewTab('http://localhost:8080/admin/user-list')}>
                                     <FontAwesomeIcon icon={faScrewdriverWrench}/> Admin site
