@@ -11,7 +11,7 @@ function ChatCard(props) {
                     <img src={ChatIcon} alt="chat-icon" className={"avatar chat-icon"} style={{ marginRight: '1em'}}/>
                     <div className={"flex-column"}>
                         <Card.Title>{chatName}</Card.Title>
-                        <Card.Text>
+                        <Card.Text style={{color: 'dimgray'}}>
                             {description}
                         </Card.Text>
                     </div>
